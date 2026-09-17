@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlucoBuddy — Wearable Diabetes Tracking Device — Mehmet Kala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <div class="logo">MEHMET KALA <span>// Industrial Design</span></div>
+    <a class="back-link" href="index.html"><span class="arrow mono">←</span> Back to work</a>
+  </div>
+  <div class="dot-rule"></div>
+</nav>
+
+<!-- ================= PROJECT HEADER ================= -->
+<header class="project-header">
+  <div>
+    <div class="eyebrow">WEARABLE — 2024</div>
+    <h1>GlucoBuddy</h1>
+    <p class="dek">A needle-free glucose monitor for children — a wearable that eases the
+      fear from daily diabetes management and grows with the child wearing it as a companion and a monitoring device.</p>
+
+    <div class="spec-row mono">
+      <span><b>COURSE</b> — ID301 - Industrial Design III</span>
+      <span><b>TERM</b> — 2024–2025 Fall</span>
+      <span><b>SDG</b> — 03 Good Health &amp; Well-being</span>
+    </div>
+
+    <div class="credits">
+      <div class="k">TEAM 13</div>
+      <div class="names">Deniz Baygın · Ezgi Balandı · Mehmet Kala · Samet Emiroğlu</div>
+    </div>
+  </div>
+
+  <div class="hero-render">
+    <img src="images/gb_hero.jpg" alt="GlucoBuddy needle-free glucose monitor, hero render">
+    <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  </div>
+</header>
+
+<div class="divider-dots dot-zone"></div>
+
+<!-- ================= THE PROJECT ================= -->
+<section class="panel">
+  <div class="section-head">
+    <div class="row">
+      <span class="num">00</span>
+      <h2>The Project</h2>
+      <span class="note">OVERVIEW</span>
+    </div>
+    <div class="dot-rule"></div>
+  </div>
+  <div class="overview-grid">
+    <div>
+      <p><b>Glucose monitoring for children</b> often relies on devices and routines that
+        can feel clinical, intrusive, and difficult to integrate into everyday life.</p>
+      <p>GlucoBuddy explores a more approachable alternative through the future promise of <b>optical glucose
+        sensing at the skin surface</b>, enabling continuous, non-invasive monitoring. The
+        design is built around wearability and familiarity, with a character-led
+        interface, snap-fit accessories, interchangeable strap colours, and an e-ink
+        screen designed for long battery life.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><div class="k">CATEGORY</div><div class="v">Paediatric health wearable</div></div>
+      <div class="fact"><div class="k">USER</div><div class="v">Children with Type 1 diabetes</div></div>
+      <div class="fact"><div class="k">KEY FEATURE</div><div class="v">Making care approachable</div></div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider-dots dot-zone"></div>
+
+<!-- ================= INTERFACE STATES ================= -->
+<section class="panel">
+  <div class="section-head">
+    <div class="row">
+      <span class="num">01</span>
+      <h2>Interface States</h2>
+      <span class="note">WATCH UI — 16 SCREENS</span>
+    </div>
+    <div class="dot-rule"></div>
+  </div>
+
+  <p class="stage-caption" style="max-width:640px; margin-bottom:32px;">
+    Every screen is built around the same idea: a character-led interface that turns
+    glucose checks, meals, activity and emergency contact into something a child can
+    navigate on their own, with friendly states and plain instructions rather than
+    clinical readouts.
+  </p>
+
+  <div class="slider-wrap slider-wrap--compact">
+    <div class="slider" id="uiSlider">
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_1_default_screen.png" alt="GlucoBuddy watch UI — default screen">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">01</span><span>Default screen</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_2_low_blood_glucose_level.png" alt="GlucoBuddy watch UI — low blood glucose level alert">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">02</span><span>Low blood glucose level</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_3_high_blood_glucose_level.png" alt="GlucoBuddy watch UI — high blood glucose level alert">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">03</span><span>High blood glucose level</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_4_visit_caregiver.png" alt="GlucoBuddy watch UI — visit caregiver prompt">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">04</span><span>Visit caregiver</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_5_different_modes.png" alt="GlucoBuddy watch UI — mode selection screen">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">05</span><span>Different modes</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_6_emergency_qr_contact_info.png" alt="GlucoBuddy watch UI — emergency QR code and contact info">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">06</span><span>Emergency QR &amp; contact info</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_7_call.png" alt="GlucoBuddy watch UI — incoming call screen">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">07</span><span>Call</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_8_excersize.png" alt="GlucoBuddy watch UI — exercise mode">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">08</span><span>Exercise</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_9_meal_time_alert.png" alt="GlucoBuddy watch UI — meal time alert">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">09</span><span>Meal time alert</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_10_meal_tracker.png" alt="GlucoBuddy watch UI — meal tracker">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">10</span><span>Meal tracker</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_11_progress_statistics.png" alt="GlucoBuddy watch UI — progress statistics">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">11</span><span>Progress statistics</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_12_call_parent.png" alt="GlucoBuddy watch UI — call parent screen">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">12</span><span>Call parent</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_13_step_counter.png" alt="GlucoBuddy watch UI — step counter">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">13</span><span>Step counter</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_14_alarm.png" alt="GlucoBuddy watch UI — alarm screen">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">14</span><span>Alarm</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_15_timer.png" alt="GlucoBuddy watch UI — timer screen">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">15</span><span>Timer</span></div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_ui_16_settings.png" alt="GlucoBuddy watch UI — settings screen">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="cap"><span class="n mono">16</span><span>Settings</span></div></div>
+
+    </div>
+
+    <div class="slider-controls">
+      <button type="button" data-dir="-1" aria-label="Previous screen">←</button>
+      <button type="button" data-dir="1" aria-label="Next screen">→</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider-dots dot-zone"></div>
+
+<!-- ================= PRODUCT FILM ================= -->
+<section class="panel">
+  <div class="section-head">
+    <div class="row">
+      <span class="num">02</span>
+      <h2>Product Video</h2>
+      <span class="note">WATCH</span>
+    </div>
+    <div class="dot-rule"></div>
+  </div>
+
+  <p class="stage-caption" style="max-width:640px; margin-bottom:32px;">
+    A short film walking through how GlucoBuddy is worn, read and used day to day.
+  </p>
+
+  <div class="media-block compact player">
+    <video src="images/gb_video.mp4" muted loop playsinline preload="auto"></video>
+    <button class="player-overlay" type="button" aria-label="Play video">▶</button>
+    <div class="player-bar">
+      <button class="player-toggle" type="button" aria-label="Play / pause">▶</button>
+      <button class="player-skip mono" type="button" data-skip="-10" aria-label="Back 10 seconds">−10s</button>
+      <button class="player-skip mono" type="button" data-skip="10" aria-label="Forward 10 seconds">+10s</button>
+      <div class="player-track"><div class="player-fill"></div></div>
+      <span class="player-time mono">0:00</span>
+      <button class="player-speed mono" type="button" aria-label="Playback speed">1×</button>
+      <button class="player-fullscreen" type="button" aria-label="Fullscreen">⛶</button>
+    </div>
+    <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  </div>
+  <div class="media-caption mono">GLUCOBUDDY EXPLAINED</div>
+</section>
+
+<div class="divider-dots dot-zone"></div>
+
+<!-- ================= FINAL RENDERS ================= -->
+<section class="panel">
+  <div class="section-head">
+    <div class="row">
+      <span class="num">03</span>
+      <h2>Final Renders</h2>
+      <span class="note">5 RENDERS</span>
+    </div>
+    <div class="dot-rule"></div>
+  </div>
+
+  <div class="slider-wrap">
+    <div class="slider" id="renderSlider">
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_hero.jpg" alt="GlucoBuddy needle-free glucose monitor, hero render">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_render_2.png" alt="GlucoBuddy watch, angled detail render">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_render_3.png" alt="GlucoBuddy exploded view with material callouts and battery life chart">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_render_4.png" alt="GlucoBuddy colour and snap-fit accessory options">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div></div>
+
+      <div class="slide"><div class="shot">
+        <img src="images/gb_render_5.png" alt="GlucoBuddy worn on the wrist">
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div></div>
+
+    </div>
+
+    <div class="slider-controls">
+      <button type="button" data-dir="-1" aria-label="Previous render">←</button>
+      <button type="button" data-dir="1" aria-label="Next render">→</button>
+    </div>
+  </div>
+</section>
+
+<div class="dot-rule"></div>
+
+<footer>
+  <h2>More work.</h2>
+  <div class="contact-links">
+    <a href="index.html">← BACK TO PORTFOLIO</a>
+    <a href="mailto:mehmet0kala@gmail.com">EMAIL</a>
+  </div>
+  <div class="footer-meta mono">
+    <span>GLUCOBUDDY — ID301 TEAM 13</span>
+    <span>MEHMET KALA</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    // one slider-wrap per instance, so the UI-states slider and the
+    // final-renders slider each get their own independent controls
+    document.querySelectorAll('.slider-wrap').forEach(function (wrap) {
+      var slider = wrap.querySelector('.slider');
+      if (!slider) return;
+      function step() {
+        var s = slider.querySelector('.slide');
+        return s ? s.getBoundingClientRect().width + 1 : slider.clientWidth;
+      }
+      wrap.querySelectorAll('.slider-controls button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          slider.scrollBy({ left: step() * Number(btn.dataset.dir), behavior: 'smooth' });
+        });
+      });
+      var down = false, startX = 0, startScroll = 0;
+      slider.addEventListener('mousedown', function (e) {
+        down = true; startX = e.pageX; startScroll = slider.scrollLeft; slider.style.cursor = 'grabbing';
+      });
+      ['mouseup','mouseleave'].forEach(function (evt) {
+        slider.addEventListener(evt, function () { down = false; slider.style.cursor = ''; });
+      });
+      slider.addEventListener('mousemove', function (e) {
+        if (!down) return; e.preventDefault();
+        slider.scrollLeft = startScroll - (e.pageX - startX);
+      });
+    });
+  })();
+
+  (function(){
+    // product film — custom player: big overlay button until first play, then a bottom play bar
+    document.querySelectorAll('.media-block.player').forEach(function(block){
+      var video = block.querySelector('video');
+      var overlay = block.querySelector('.player-overlay');
+      var bar = block.querySelector('.player-bar');
+      var toggle = block.querySelector('.player-toggle');
+      var track = block.querySelector('.player-track');
+      var fill = block.querySelector('.player-fill');
+      var time = block.querySelector('.player-time');
+      var skipBtns = block.querySelectorAll('.player-skip');
+      var speedBtn = block.querySelector('.player-speed');
+      var speeds = [0.5, 1, 1.5, 2];
+      var speedIndex = 1;
+      if(!video) return;
+
+      function formatTime(s){
+        if(!isFinite(s)) return '0:00';
+        var m = Math.floor(s / 60), sec = Math.floor(s % 60);
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+      }
+      function sync(){
+        var playing = !video.paused && !video.ended;
+        overlay.textContent = playing ? '❚❚' : '▶';
+        toggle.textContent = playing ? '❚❚' : '▶';
+      }
+      function toggleVideo(){
+        video.paused ? video.play() : video.pause();
+      }
+
+      if(bar) bar.addEventListener('click', function(e){ e.stopPropagation(); });
+      overlay.addEventListener('click', function(e){
+        e.stopPropagation();
+        block.classList.add('touched');
+        toggleVideo();
+      });
+      toggle.addEventListener('click', function(e){
+        e.stopPropagation();
+        block.classList.add('touched');
+        toggleVideo();
+      });
+      track.addEventListener('click', function(e){
+        e.stopPropagation();
+        var rect = track.getBoundingClientRect();
+        var ratio = (e.clientX - rect.left) / rect.width;
+        if(video.duration) video.currentTime = ratio * video.duration;
+      });
+      skipBtns.forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.stopPropagation();
+          var delta = parseFloat(btn.dataset.skip) || 0;
+          var d = video.duration || Infinity;
+          video.currentTime = Math.min(Math.max(video.currentTime + delta, 0), d);
+        });
+      });
+      if(speedBtn){
+        speedBtn.textContent = speeds[speedIndex] + '×';
+        speedBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          speedIndex = (speedIndex + 1) % speeds.length;
+          video.playbackRate = speeds[speedIndex];
+          speedBtn.textContent = speeds[speedIndex] + '×';
+        });
+      }
+      var fsBtn = block.querySelector('.player-fullscreen');
+      if(fsBtn){
+        fsBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          var isFs = document.fullscreenElement === block || document.webkitFullscreenElement === block;
+          if(isFs){
+            (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+          } else if(block.requestFullscreen){
+            block.requestFullscreen();
+          } else if(block.webkitRequestFullscreen){
+            block.webkitRequestFullscreen();
+          }
+        });
+      }
+      video.addEventListener('timeupdate', function(){
+        if(video.duration){ fill.style.width = (video.currentTime / video.duration * 100) + '%'; }
+        time.textContent = formatTime(video.currentTime);
+      });
+      video.addEventListener('play', sync);
+      video.addEventListener('pause', sync);
+      block.addEventListener('click', function(){
+        block.classList.add('touched');
+        toggleVideo();
+      });
+      sync();
+    });
+  })();
+
+  (function(){
+    // lightbox — click any slide image for a large view with zoom + prev/next
+    var lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML =
+      '<button class="lightbox-close" type="button" aria-label="Close">✕</button>' +
+      '<button class="lightbox-nav prev" type="button" aria-label="Previous image">←</button>' +
+      '<div class="lightbox-stage"><img class="lightbox-img" alt=""></div>' +
+      '<button class="lightbox-nav next" type="button" aria-label="Next image">→</button>';
+    document.body.appendChild(lightbox);
+
+    var stageImg = lightbox.querySelector('.lightbox-img');
+    var btnClose = lightbox.querySelector('.lightbox-close');
+    var btnPrev = lightbox.querySelector('.lightbox-nav.prev');
+    var btnNext = lightbox.querySelector('.lightbox-nav.next');
+    var curGroup = [], curIndex = 0;
+
+    function show(){
+      stageImg.classList.remove('zoomed');
+      var img = curGroup[curIndex];
+      stageImg.src = img.currentSrc || img.src;
+      stageImg.alt = img.alt || '';
+      var multi = curGroup.length > 1;
+      btnPrev.hidden = !multi;
+      btnNext.hidden = !multi;
+    }
+    function open(group, index){
+      curGroup = group; curIndex = index; show();
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function prev(){ curIndex = (curIndex - 1 + curGroup.length) % curGroup.length; show(); }
+    function next(){ curIndex = (curIndex + 1) % curGroup.length; show(); }
+
+    btnClose.addEventListener('click', close);
+    btnPrev.addEventListener('click', prev);
+    btnNext.addEventListener('click', next);
+    lightbox.addEventListener('click', function(e){ if(e.target === lightbox) close(); });
+    stageImg.addEventListener('click', function(e){
+      e.stopPropagation();
+      stageImg.classList.toggle('zoomed');
+    });
+    document.addEventListener('keydown', function(e){
+      if(!lightbox.classList.contains('open')) return;
+      if(e.key === 'Escape') close();
+      else if(e.key === 'ArrowLeft') prev();
+      else if(e.key === 'ArrowRight') next();
+    });
+
+    document.querySelectorAll('.slider').forEach(function(slider){
+      var imgs = Array.prototype.slice.call(slider.querySelectorAll('.slide .shot img'));
+      if(!imgs.length) return;
+      imgs.forEach(function(img, i){
+        var downX = 0, downY = 0, dragged = false;
+        img.addEventListener('mousedown', function(e){ downX = e.clientX; downY = e.clientY; dragged = false; });
+        img.addEventListener('mousemove', function(e){
+          if(e.buttons === 1 && (Math.abs(e.clientX - downX) > 6 || Math.abs(e.clientY - downY) > 6)) dragged = true;
+        });
+        img.addEventListener('click', function(){
+          if(dragged) return;
+          open(imgs, i);
+        });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

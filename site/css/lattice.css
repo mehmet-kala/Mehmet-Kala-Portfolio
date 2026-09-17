@@ -1,0 +1,100 @@
+/* lattice page components */
+.cta-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+  .cta{
+    display:inline-flex; align-items:center; gap:9px;
+    font-size:13px; font-weight:600; letter-spacing:0.01em;
+    background:var(--ink); color:var(--white); text-decoration:none;
+    padding:11px 18px; border:1px solid var(--ink);
+    transition:background .2s, color .2s;
+  }
+  .cta:hover{ background:var(--white); color:var(--ink); }
+  .cta.ghost{ background:transparent; color:var(--ink); border-color:var(--line-strong); }
+  .cta.ghost:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* .media-block base, .media-caption and the .media-block.player custom
+     player now live in the shared style.css so any project page can use
+     the same full-bleed video treatment. */
+
+  /* statement break */
+  .statement{ padding:0 96px; }
+  .statement p{
+    font-family:'Space Grotesk',sans-serif; font-weight:500;
+    font-size:clamp(22px,3vw,38px); line-height:1.25; letter-spacing:-0.01em;
+    max-width:900px; color:var(--ink);
+  }
+  .statement .lead{ color:var(--ink-faint); }
+  @media (max-width:860px){ .statement{ padding:0 24px; } }
+
+  /* cell grid (the polyhedra) */
+  .cell-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .cell-grid .cell{ background:var(--white); }
+  .cell-grid .cell .shot{
+    position:relative; aspect-ratio:1/1; background:var(--paper);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .cell-grid .cell .shot img, .cell-grid .cell .shot video{ width:100%; height:100%; object-fit:cover; display:block; }
+  .cell-grid .cell .shot .placeholder span{
+    font-size:10px; font-weight:500; color:var(--ink-faint); letter-spacing:0.04em;
+    border:1px solid var(--line-strong); padding:4px 9px; background:var(--white);
+  }
+  .cell-grid .cell .lab{ padding:14px 16px 18px; }
+  .cell-grid .cell .lab .n{ font-size:10px; font-weight:600; color:var(--accent); letter-spacing:0.06em; margin-bottom:5px; }
+  .cell-grid .cell .lab .t{ font-size:13px; color:var(--ink); line-height:1.4; }
+  @media (max-width:860px){ .cell-grid{ grid-template-columns:repeat(2,1fr); } }
+
+  /* mosaic grid — one big shot, one wide shot, two small squares */
+  .mosaic-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:2fr 1fr;
+    gap:12px; background:var(--white);
+    aspect-ratio:15/8; overflow:hidden;
+  }
+  /* hairline on each cell: white gutters alone read as nothing, because these
+     renders already sit on near-white backgrounds */
+  .mosaic-grid > div{ position:relative; background:var(--paper); overflow:hidden; border:1px solid var(--line); }
+  .mosaic-grid img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .mosaic-grid .m1{ grid-column:1/3; grid-row:1/3; }
+  .mosaic-grid .m2{ grid-column:3/5; grid-row:1; }
+  .mosaic-grid .m3{ grid-column:3/4; grid-row:2; }
+  .mosaic-grid .m4{ grid-column:4/5; grid-row:2; }
+  @media (max-width:760px){
+    .mosaic-grid{ grid-template-columns:repeat(2,1fr); grid-template-rows:none; aspect-ratio:auto; }
+    .mosaic-grid .m1{ grid-column:1/3; aspect-ratio:4/5; }
+    .mosaic-grid .m2{ grid-column:1/3; aspect-ratio:16/9; }
+    .mosaic-grid .m3{ grid-column:1/2; aspect-ratio:1/1; }
+    .mosaic-grid .m4{ grid-column:2/3; aspect-ratio:1/1; }
+  }
+
+  /* paired physical shots — mirrors the mosaic grid's own column structure so
+     the text sits under lg_s4_Image1 (cols 1-2) and the two photos sit under
+     lg_s4_Image3 / lg_s4_Image4 (cols 3-4) */
+  .pair-shots{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+    margin-top:24px; align-items:center;
+  }
+  .pair-shots-text{ grid-column:1/3; }
+  .pair-shots-text h3{
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:clamp(20px,2.2vw,26px); line-height:1.15; margin-bottom:10px;
+  }
+  .pair-shots-text p{ font-size:13.5px; line-height:1.6; color:var(--ink-dim); max-width:36ch; }
+  .pair-shots-imgs{ grid-column:3/5; display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  .pair-shots-imgs figure{ margin:0; }
+  .pair-shots-imgs img{ width:100%; height:auto; display:block; border:1px solid var(--line); }
+  .pair-shots-imgs figcaption{
+    margin-top:10px; text-align:center; font-size:11.5px; font-weight:500; color:var(--ink);
+  }
+  @media (max-width:760px){
+    .pair-shots{ grid-template-columns:1fr; }
+    .pair-shots-text{ grid-column:1/2; }
+    .pair-shots-imgs{ grid-column:1/2; }
+  }
+
+  /* closing CTA */
+  .use-tool{ text-align:center; padding:96px; }
+  .use-tool h2{
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:clamp(28px,4.5vw,52px); margin-bottom:16px;
+  }
+  .use-tool p{ font-size:16px; color:var(--ink-dim); max-width:520px; margin:0 auto 32px; line-height:1.6; }
+  .use-tool .cta-row{ justify-content:center; }
+  @media (max-width:860px){ .use-tool{ padding:72px 24px; } }

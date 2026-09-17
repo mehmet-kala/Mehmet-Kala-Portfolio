@@ -1,0 +1,6 @@
+# Oversized source media — these exceed GitHub's hard 100 MB per-file limit
+# and would cause the push to be rejected. They remain on disk, untouched, and
+# are hosted outside GitHub. Compressed *_web.mp4 copies are committed instead.
+site/images/lattice_screen_recording_basic.mp4
+site/images/lg_advanced.mp4
+site/images/dc_assamble.gif

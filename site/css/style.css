@@ -1,0 +1,741 @@
+:root{
+    --white: #FFFFFF;
+    --ink: #14181D;
+    --ink-dim: #5B6670;
+    --ink-faint: #8993A0;
+    --line: #DCE1E6;
+    --line-strong: #C3CAD1;
+    --dot: #C7CED4;
+    --accent: #2C4A66;
+    --accent-soft: rgba(44,74,102,0.07);
+    --paper: #F7F9FA;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background: var(--white); color: var(--ink); font-family:'Inter', sans-serif; overflow-x:hidden; }
+  ::selection{ background: var(--accent); color: var(--white); }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  header, main, footer{ position:relative; z-index:1; }
+
+  /* ---------- dot texture — same grid system as the main site ---------- */
+  .dot-zone{
+    background-image: radial-gradient(var(--dot) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    background-position: 0 0;
+    background-attachment: fixed;
+  }
+  @supports not (background-attachment: fixed){ .dot-zone{ background-attachment: scroll; } }
+  .divider-dots{ height: 48px; margin: 0 96px; }
+  .dot-rule{
+    height: 8px; width:100%;
+    background-image: radial-gradient(var(--dot) 1.3px, transparent 1.3px);
+    background-size: 24px 8px; background-position: 0 0; background-attachment: fixed;
+  }
+  @supports not (background-attachment: fixed){ .dot-rule{ background-attachment: scroll; } }
+
+  /* ---------- nav ---------- */
+  nav{
+    position: sticky; top:0; z-index:10;
+    padding: 24px 96px 0;
+    background: rgba(255,255,255,0.92);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+  .nav-row{ display:flex; align-items:center; justify-content:space-between; padding-bottom:24px; }
+  .logo{ font-size:14px; font-weight:600; letter-spacing:0.01em; color: var(--ink); }
+  .logo span{ color: var(--ink-faint); font-weight:400; }
+  .back-link{
+    font-size:13px; font-weight:500; color: var(--ink-dim);
+    text-decoration:none; display:flex; align-items:center; gap:8px;
+  }
+  .back-link:hover{ color: var(--accent); }
+  .back-link .arrow{ font-family:'IBM Plex Mono', monospace; }
+
+  /* ---------- project header ---------- */
+  .project-header{
+    padding: 72px 96px 48px;
+    display:grid; grid-template-columns: 0.85fr 1.15fr; gap:48px; align-items:center;
+  }
+  .project-header .eyebrow{
+    font-size:13px; color: var(--accent); font-weight:600; letter-spacing:0.04em;
+    margin-bottom:20px; display:flex; align-items:center; gap:10px;
+  }
+  .project-header .eyebrow::before{ content:''; width:24px; height:1px; background: var(--accent); }
+  .project-header h1{
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size: clamp(40px, 5.5vw, 76px); line-height:1.02; letter-spacing:-0.01em;
+    margin-bottom:16px;
+  }
+  .project-header .dek{ font-size:18px; line-height:1.5; color: var(--ink-dim); }
+
+  /* hero render — the payoff image, sits beside the title */
+  .hero-render{
+    position:relative; aspect-ratio: 4/3;
+    background: var(--white);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-render img{ width:100%; height:100%; object-fit:cover; display:block; background: var(--white); }
+  /* opt-in: show the whole image instead of filling the 4:3 box — for a
+     transparent cutout or a wide shot that cover would crop the edges off */
+  .hero-render.contain img{ object-fit:contain; }
+  .hero-render video{ width:100%; height:100%; object-fit:contain; display:block; background: var(--white); }
+  .hero-render .placeholder span{
+    font-size:11px; font-weight:500; color: var(--ink-faint); letter-spacing:0.04em;
+    border:1px solid var(--line-strong); padding:6px 14px; background: var(--white);
+  }
+  .hero-render .corner{
+    position:absolute; width:16px; height:16px; border:1px solid var(--accent);
+    opacity:0; transition: opacity .25s;
+  }
+  .hero-render:hover .corner{ opacity:0.5; }
+  .hero-render .corner.tl{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .hero-render .corner.tr{ top:-1px; right:-1px; border-left:none; border-bottom:none; }
+  .hero-render .corner.bl{ bottom:-1px; left:-1px; border-right:none; border-top:none; }
+  .hero-render .corner.br{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+
+  .credits{ margin-top:32px; font-size:13px; line-height:1.7; color: var(--ink-dim); }
+  .credits .k{ font-size:11px; color: var(--accent); font-weight:600; letter-spacing:0.05em; margin-bottom:6px; }
+  .credits .names{ color: var(--ink); }
+
+  @media (max-width:860px){
+    .project-header{ grid-template-columns:1fr; gap:32px; padding:48px 24px 32px; }
+  }
+
+  .spec-row{
+    display:flex; flex-wrap:wrap; gap:12px;
+    margin-top:36px; padding-top:24px;
+  }
+  .spec-row span{
+    font-size:11px; letter-spacing:0.03em; color: var(--ink-dim);
+    border:1px solid var(--line); padding:5px 12px;
+  }
+  .spec-row span b{ color: var(--ink); font-weight:600; }
+
+  /* ---------- media frames (shared component, several ratios) ---------- */
+  .frame{
+    position:relative; background: var(--paper); border: 1px solid var(--line-strong);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .frame img{ width:100%; height:100%; object-fit:contain; display:block; background: var(--white); padding:10px 0; cursor: zoom-in; }
+  .frame .placeholder{ text-align:center; }
+  .frame .placeholder span{
+    font-size:11px; font-weight:500; color: var(--ink-faint); letter-spacing:0.04em;
+    border: 1px solid var(--line-strong); padding: 5px 12px; background: var(--white);
+  }
+  .frame .corner{
+    position:absolute; width:16px; height:16px; border: 1px solid var(--accent);
+    opacity:0; transition: opacity .25s;
+  }
+  .frame:hover .corner{ opacity:0.5; }
+  .frame .corner.tl{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .frame .corner.tr{ top:-1px; right:-1px; border-left:none; border-bottom:none; }
+  .frame .corner.bl{ bottom:-1px; left:-1px; border-right:none; border-top:none; }
+  .frame .corner.br{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+
+  .frame--wide{ aspect-ratio: 3 / 2; width:100%; }      /* process / exploration sheets */
+  .frame--portrait{ aspect-ratio: 4 / 5; }                /* hero-style single shots */
+  .frame--square{ aspect-ratio: 1 / 1; }                  /* fit studies, detail crops */
+  .frame--thumb{ aspect-ratio: 4 / 3; }                   /* gallery thumbnails */
+  /* no fixed box: the frame takes the image's own proportions, so a full-width
+     sheet fills it edge to edge whatever its ratio, with no side letterboxing */
+  .frame--auto{ width:100%; }
+  .frame--auto img{ height:auto; }
+  /* opt-in: side padding for a --auto sheet that otherwise runs edge-to-edge —
+     matches the frame's own 10px top/bottom padding so all four sides are even */
+  .frame--pad-x img{ padding-left:10px; padding-right:10px; }
+
+  /* ---------- full-bleed media block (large video/animation, shared) ---------- */
+  .media-block{
+    position:relative; width:100%; aspect-ratio:16/9;
+    background: var(--paper); overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .media-block.tall{ aspect-ratio:16/10; }
+  .media-block.square{ aspect-ratio:1/1; }
+  /* opt-in: shrink the frame a little within its column instead of filling it edge-to-edge */
+  .media-block.compact{ max-width:85%; margin-inline:auto; }
+  .media-block img, .media-block video{ width:100%; height:100%; object-fit:cover; display:block; }
+  /* opt-in: show the whole frame, uncropped — for an explainer animation where
+     every part of the frame matters, rather than a background-style loop */
+  .media-block.contain img, .media-block.contain video{ object-fit:contain; background: var(--white); }
+  .media-block .placeholder span{
+    font-size:11px; font-weight:500; color: var(--ink-faint); letter-spacing:0.04em;
+    border:1px solid var(--line-strong); padding:7px 16px; background: var(--white);
+  }
+  .media-block .corner{
+    position:absolute; width:16px; height:16px; border:1px solid var(--accent);
+    opacity:0; transition:opacity .25s;
+  }
+  .media-block:hover .corner{ opacity:0.5; }
+  .media-block .corner.tl{ top:12px; left:12px; border-right:none; border-bottom:none; }
+  .media-block .corner.tr{ top:12px; right:12px; border-left:none; border-bottom:none; }
+  .media-block .corner.bl{ bottom:12px; left:12px; border-right:none; border-top:none; }
+  .media-block .corner.br{ bottom:12px; right:12px; border-left:none; border-top:none; }
+  .media-caption{
+    margin-top:12px; font-size:11px; color: var(--ink-faint); font-weight:500; letter-spacing:0.02em;
+  }
+
+  /* custom video player — big overlay button until first play, then a bottom bar */
+  .media-block.player{ cursor:pointer; }
+  .media-block.player .player-overlay{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:72px; height:72px; border-radius:50%; z-index:3;
+    border:1px solid var(--line-strong); background:rgba(255,255,255,0.92); color: var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px; padding-left:4px; cursor:pointer;
+    transition:opacity .2s, border-color .2s, color .2s;
+  }
+  .media-block.player .player-overlay:hover{ border-color: var(--accent); color: var(--accent); }
+  .media-block.player.touched .player-overlay{ opacity:0; pointer-events:none; }
+  .media-block.player .player-bar{
+    position:absolute; left:0; right:0; bottom:0; z-index:3;
+    display:flex; align-items:center; gap:12px;
+    padding:0 14px; height:40px;
+    background:rgba(255,255,255,0.92); border-top:1px solid var(--line);
+  }
+  .media-block.player .player-toggle{
+    flex:0 0 auto; width:20px; height:20px; border:none; background:none;
+    color: var(--ink); font-size:12px; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; padding-left:2px;
+  }
+  .media-block.player .player-toggle:hover{ color: var(--accent); }
+  .media-block.player .player-skip{
+    flex:0 0 auto; border:none; background:none; color: var(--ink-dim);
+    font-size:10.5px; letter-spacing:0.02em; cursor:pointer; padding:0;
+  }
+  .media-block.player .player-skip:hover{ color: var(--accent); }
+  .media-block.player .player-track{
+    flex:1 1 auto; height:3px; background: var(--line-strong); cursor:pointer; position:relative;
+  }
+  .media-block.player .player-fill{ position:absolute; top:0; left:0; height:100%; width:0%; background: var(--accent); }
+  .media-block.player .player-time{
+    flex:0 0 auto; font-size:10.5px; color: var(--ink-faint); letter-spacing:0.02em;
+  }
+  .media-block.player .player-speed{
+    flex:0 0 auto; border:1px solid var(--line-strong); background:none; color: var(--ink-dim);
+    font-size:10.5px; letter-spacing:0.02em; cursor:pointer; padding:3px 7px;
+  }
+  .media-block.player .player-speed:hover{ border-color: var(--accent); color: var(--accent); }
+  .media-block.player .player-fullscreen{
+    flex:0 0 auto; width:20px; height:20px; border:none; background:none;
+    color: var(--ink-dim); font-size:13px; display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+  }
+  .media-block.player .player-fullscreen:hover{ color: var(--accent); }
+  /* while fullscreen, letterbox the frame instead of cropping it to fill the screen */
+  .media-block:fullscreen{ background:#000; max-width:none; }
+  .media-block:fullscreen video{ object-fit:contain; }
+  .media-block:-webkit-full-screen{ background:#000; max-width:none; }
+  .media-block:-webkit-full-screen video{ object-fit:contain; }
+  @media (max-width:520px){ .media-block.player .player-skip{ display:none; } }
+
+  /* ---------- bento grid — used for the concept development section ---------- */
+  .bento-grid{
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(144px, auto);
+    gap:1px;
+    background: var(--line);
+    border:1px solid var(--line);
+  }
+  .bento-cell{ background: var(--white); position:relative; overflow:hidden; }
+
+  /* image cells: fill the grid box exactly, no aspect-ratio (the grid span sets the shape) */
+  .bento-cell.media .placeholder{
+    width:100%; height:100%; background: var(--paper);
+    display:flex; align-items:center; justify-content:center; text-align:center; padding:12px;
+  }
+  .bento-cell.media .placeholder span{
+    font-size:10.5px; font-weight:500; color: var(--ink-faint); letter-spacing:0.03em;
+    border: 1px solid var(--line-strong); padding: 4px 9px; background: var(--white);
+  }
+  /* nothing is cropped: every image shows whole, letterboxed on white */
+  .bento-cell.media img, .bento-cell.media video{
+    width:100%; height:100%; object-fit:contain; display:block;
+    background: var(--white); padding:28px;
+  }
+  /* opt-in: fill the cell edge-to-edge, cropping to the cell's rectangle */
+  .bento-cell.media.crop img, .bento-cell.media.crop video{ object-fit:cover; padding:0; }
+  /* opt-in: shave a fixed 4px off the right edge of the rendered media — for a
+     stray line baked into just that one edge of a source. Works underneath
+     either the default contain/padded look or the .crop cover look, since
+     clip-path trims the element's own box rather than how it fills the cell. */
+  .crop-right-4px{ clip-path:inset(0 4px 0 0); }
+  /* opt-in: pin the media to a fixed shape so a tall source gets cropped to it.
+     the ratio has to sit on the img/video, not the cell — height:100% on the media
+     makes the auto row grow to the source's own aspect ratio, and a grid item's
+     default align-self:stretch overrides any aspect-ratio set on the cell. */
+  .bento-cell.media.ratio-16x9 img, .bento-cell.media.ratio-16x9 video{ height:auto; aspect-ratio:16/9; }
+  .bento-cell.media.ratio-5x4 img, .bento-cell.media.ratio-5x4 video{ height:auto; aspect-ratio:5/4; }
+  /* a pinned-ratio media sits in a taller cell (e.g. a b-row4 pair) shorter than the
+     box — center it in the leftover space instead of leaving it stuck to the top */
+  .bento-cell.media.ratio-16x9, .bento-cell.media.ratio-5x4{ display:flex; align-items:center; justify-content:center; }
+  /* anthropometric diagram: sits noticeably smaller inside its cell */
+  .bento-cell.media.pad-xl img{ padding:68px 56px; }
+  @media (max-width:860px){ .bento-cell.media.pad-xl img{ padding:32px 24px; } }
+  /* opt-in: extra breathing room on the left/right only, top/bottom unchanged —
+     for a wide-format photo that otherwise runs edge-to-edge in a narrow cell */
+  .bento-cell.media.pad-x-xl img{ padding-left:130px; padding-right:130px; }
+  @media (max-width:860px){ .bento-cell.media.pad-x-xl img{ padding-left:56px; padding-right:56px; } }
+  /* opt-in: no top/bottom padding — image runs flush to the cell's top and
+     bottom edges, left/right unchanged */
+  .bento-cell.media.pad-y-0 img{ padding-top:0; padding-bottom:0; }
+  .bento-cell.media .bento-triptych img{
+    width:100%; height:100%; object-fit:contain; display:block;
+    background: var(--white); padding:0;
+  }
+  .bento-cell .corner{ position:absolute; width:14px; height:14px; border: 1px solid var(--accent); opacity:0; transition: opacity .25s; }
+  .bento-cell.media:hover .corner{ opacity:0.5; }
+  .bento-cell .corner.tl{ top:8px; left:8px; border-right:none; border-bottom:none; }
+  .bento-cell .corner.tr{ top:8px; right:8px; border-left:none; border-bottom:none; }
+  .bento-cell .corner.bl{ bottom:8px; left:8px; border-right:none; border-top:none; }
+  .bento-cell .corner.br{ bottom:8px; right:8px; border-left:none; border-top:none; }
+  .bento-cell .tag{
+    position:absolute; top:10px; left:10px; z-index:2;
+    font-size:9.5px; font-weight:600; letter-spacing:0.05em; color: var(--accent);
+    background: var(--white); border:1px solid var(--line-strong); padding:2px 7px;
+  }
+
+  /* text cells: note / quote / spec-list, no image */
+  .bento-cell.note, .bento-cell.spec{ padding: 20px; display:flex; flex-direction:column; justify-content:center; }
+  .bento-cell.note p{ font-size:14px; line-height:1.55; color: var(--ink); }
+  .bento-cell.note .k, .bento-cell.spec .k{
+    font-size:10px; color: var(--accent); font-weight:600; letter-spacing:0.05em; margin-bottom:10px;
+  }
+  .bento-cell.spec ul{ list-style:none; }
+  .bento-cell.spec li{
+    font-size:11.5px; color: var(--ink-dim); padding:4px 0; border-top:1px solid var(--line);
+  }
+  .bento-cell.spec li:first-child{ border-top:none; }
+  .bento-cell.spec li b{ color: var(--ink); font-weight:600; }
+
+  /* spans — six-column base grid, snapped to whole columns/rows */
+  .b-col2{ grid-column: span 2; } .b-col3{ grid-column: span 3; }
+  .b-col4{ grid-column: span 4; } .b-col1{ grid-column: span 1; }
+  .b-col5{ grid-column: span 5; } .b-col6{ grid-column: span 6; }
+  .b-row2{ grid-row: span 2; } .b-row3{ grid-row: span 3; } .b-row4{ grid-row: span 4; }
+
+  /* section 05 strip: six across is too tight once the grid squeezes —
+     break it into two rows of three before the cells get unreadably narrow */
+  @media (max-width:1180px){
+    .bento-cell.crop.b-col1{ grid-column: span 2; }
+  }
+
+  /* opt-in: finer 10-column track for a grid whose first row needs a split
+     the 6-column system can't land on (e.g. 70/30 — between .b-col4/.b-col2's
+     66/33 and .b-col5/.b-col1's 83/17). b-col3/b-col5 are reused here at their
+     new 10-column proportions (30% / 50%); b-col7 exists only for this grid. */
+  .bento-grid--10col{ grid-template-columns: repeat(10, 1fr); }
+  .b-col7{ grid-column: span 7; }
+
+  /* triptych — for the mockup-test cell, three photos inside one wide bento cell */
+  .bento-triptych{ display:grid; grid-template-columns: repeat(3, 1fr); gap:1px; background: var(--line); width:100%; aspect-ratio: 4 / 1; }
+  .bento-triptych .placeholder{ height:100%; }
+
+  @media (max-width:700px){
+    .bento-grid{ grid-template-columns: repeat(2, 1fr); grid-auto-rows: minmax(130px, auto); }
+    .b-col2, .b-col3, .b-col4, .b-col5, .b-col6, .b-col7{ grid-column: span 2; }
+    .b-row2, .b-row3, .b-row4{ grid-row: span 1; }
+    .bento-triptych{ grid-template-columns: 1fr; aspect-ratio: auto; }
+    .bento-cell.media .bento-triptych img{ height:auto; }
+  }
+
+  /* ---------- sketch development grid — asymmetric editorial pairs,
+     each figure sized to its own sketch rather than forced into a fixed
+     ratio, so nothing is cropped; reuses the bento grid's six-column
+     spans (.b-col2 / .b-col3 / .b-col4) and its mobile collapse.
+     The layout runs the full panel width — flex-grow on both sides means
+     there's no leftover gap at the right edge. */
+  .sketch-layout{ display:flex; gap:32px; align-items:stretch; }
+  .sketch-grid{
+    display:grid; grid-template-columns: repeat(6, 1fr);
+    column-gap:28px; row-gap:32px; align-items:start;
+    flex:5 1 0; min-width:0;
+  }
+  .sketch-fig{ margin:0; }
+  .sketch-img{ position:relative; }
+  .sketch-img img{ width:100%; height:auto; display:block; background: var(--paper); }
+  .sketch-img .corner{
+    position:absolute; width:14px; height:14px; border:1px solid var(--accent);
+    opacity:0; transition: opacity .25s;
+  }
+  .sketch-img:hover .corner{ opacity:0.5; }
+  .sketch-img .corner.tl{ top:8px; left:8px; border-right:none; border-bottom:none; }
+  .sketch-img .corner.tr{ top:8px; right:8px; border-left:none; border-bottom:none; }
+  .sketch-img .corner.bl{ bottom:8px; left:8px; border-right:none; border-top:none; }
+  .sketch-img .corner.br{ bottom:8px; right:8px; border-left:none; border-top:none; }
+  .sketch-fig .cap-title{ margin-top:16px; font-size:13px; font-weight:600; color: var(--ink); }
+  .sketch-fig .cap-desc{ margin-top:4px; font-size:12.5px; line-height:1.5; color: var(--ink-dim); }
+  /* the POV sketch: a tall sidebar figure that spans the height of both
+     rows in the grid beside it, rather than sitting in the 6-column grid.
+     It still carries the larger share of the row (flex:6 against the
+     grid's 5), so it reads as the dominant figure, just not as wide as
+     the earlier 3:2 split. */
+  .sketch-pov{ flex:6 1 0; min-width:0; display:flex; flex-direction:column; background:#fbfbfb; }
+  .sketch-pov .sketch-img{
+    flex:1 1 auto; display:flex; align-items:center; justify-content:center;
+    background: #fbfbfb; padding:5px;
+  }
+  .sketch-pov .sketch-img img{ width:100%; height:100%; object-fit:contain; }
+  @media (max-width:700px){
+    .sketch-layout{ flex-direction:column; }
+    .sketch-grid{ grid-template-columns: repeat(2, 1fr); row-gap:32px; }
+    .sketch-pov{ flex:0 0 auto; }
+    .sketch-pov .sketch-img{ aspect-ratio: 21/9; }
+  }
+
+  /* ---------- concept development: research → concept sketches ---------- */
+  .concept-research{ margin-bottom:0; }
+  /* small centered label marking the shift from research data to the
+     higher-fidelity sketches beneath it */
+  .concept-transition{
+    margin:48px 0 28px; text-align:center;
+    font-size:11px; font-weight:600; color: var(--accent); letter-spacing:0.08em;
+  }
+
+  /* ---------- the system: editorial feature blocks explaining the
+     resolved product, each an image + a small copy stack rather than
+     a gallery card ---------- */
+  .system-details{ display:flex; flex-direction:column; gap:64px; }
+  .system-feature-media{ position:relative; }
+  .system-feature-media img{ width:100%; height:auto; display:block; object-fit:contain; }
+  .system-feature-media .corner{
+    position:absolute; width:14px; height:14px; border:1px solid var(--accent);
+    opacity:0; transition: opacity .25s;
+  }
+  .system-feature-media:hover .corner{ opacity:0.5; }
+  .system-feature-media .corner.tl{ top:8px; left:8px; border-right:none; border-bottom:none; }
+  .system-feature-media .corner.tr{ top:8px; right:8px; border-left:none; border-bottom:none; }
+  .system-feature-media .corner.bl{ bottom:8px; left:8px; border-right:none; border-top:none; }
+  .system-feature-media .corner.br{ bottom:8px; right:8px; border-left:none; border-top:none; }
+
+  .system-feature-copy .f-num{
+    font-size:11px; font-weight:600; color: var(--accent); letter-spacing:0.08em; margin-bottom:10px;
+  }
+  .system-feature-copy .f-title{
+    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:20px;
+    line-height:1.2; margin-bottom:6px; color: var(--ink);
+  }
+  .system-feature-copy .f-line{ font-size:13px; color: var(--ink-dim); margin-bottom:12px; }
+  .system-feature-copy .f-desc{ font-size:13.5px; line-height:1.6; color: var(--ink-dim); }
+
+  /* 01 — hero: the meeting-table image is the dominant visual, text rides beside it.
+     The column split matches .system-feature--split's 63fr/37fr exactly
+     (same gap too), so the image's right edge lines up with the partition
+     image directly beneath it in the next row. */
+  .system-feature--hero{
+    display:grid; grid-template-columns: 63fr 37fr; gap:40px; align-items:center;
+  }
+
+  /* 02 + 03 — an asymmetric pair, each its own image + copy stacked;
+     natural image heights mean neither is forced to match the other */
+  .system-feature--split{
+    display:grid; grid-template-columns: 63fr 37fr; gap:40px; align-items:start;
+  }
+  .system-feature-block{ display:flex; flex-direction:column; gap:16px; }
+  /* matched heights so the pair reads as one row rather than two
+     independently-sized images — each still keeps its own column width */
+  .system-feature--split .system-feature-media{ height:400px; }
+  .system-feature--split .system-feature-media img{ width:100%; height:100%; object-fit:cover; }
+
+  /* 04 — mechanism: narrow text, large uncropped image (no fixed height,
+     no object-fit:cover — the row grows to whatever the drawing needs) */
+  .system-feature--mechanism{
+    display:grid; grid-template-columns: 23fr 77fr; gap:40px; align-items:start;
+  }
+
+  /* 05 — scalable clusters: narrow text, three layouts sized by their own
+     aspect ratio (fr tracks matched to their real proportions) so the row
+     itself reads as growth from 2 to 6 people, not three equal cards */
+  .system-feature--layouts{
+    display:grid; grid-template-columns: 22fr 78fr; gap:40px; align-items:start;
+  }
+  /* a shared image height (rather than forced column widths) is what
+     actually keeps the three layouts level — each still keeps its own
+     width at that height, so 2/4/6-person growth still reads left to
+     right, it just no longer varies in height too */
+  .system-layouts-grid{
+    display:flex; align-items:flex-end; justify-content:flex-end; gap:28px;
+  }
+  .system-layout-item{ flex:0 0 auto; }
+  .system-layout-media{ position:relative; height:340px; }
+  .system-layout-media img{ width:auto; height:100%; max-width:100%; display:block; }
+  .system-layout-media .corner{
+    position:absolute; width:12px; height:12px; border:1px solid var(--accent);
+    opacity:0; transition: opacity .25s;
+  }
+  .system-layout-media:hover .corner{ opacity:0.5; }
+  .system-layout-media .corner.tl{ top:6px; left:6px; border-right:none; border-bottom:none; }
+  .system-layout-media .corner.tr{ top:6px; right:6px; border-left:none; border-bottom:none; }
+  .system-layout-media .corner.bl{ bottom:6px; left:6px; border-right:none; border-top:none; }
+  .system-layout-media .corner.br{ bottom:6px; right:6px; border-left:none; border-top:none; }
+  .system-layout-label{
+    margin-top:10px; text-align:center; font-size:11px; color: var(--ink-dim); letter-spacing:0.03em;
+  }
+
+  /* 06 — accessory panorama: same 63fr/37fr split as the hero and the
+     partition/outlet rows, so its right edge lines up with the same
+     column line the rest of the section reads from (image left, text
+     right — reversed from the other rows) */
+  .system-feature--panorama{
+    display:grid; grid-template-columns: 63fr 37fr; gap:40px; align-items:center;
+  }
+
+  @media (max-width:860px){
+    .system-feature--hero,
+    .system-feature--split,
+    .system-feature--mechanism,
+    .system-feature--layouts,
+    .system-feature--panorama{ grid-template-columns: 1fr; gap:28px; }
+    .system-details{ gap:48px; }
+  }
+  @media (max-width:700px){
+    .system-layouts-grid{ flex-direction:column; align-items:center; gap:24px; }
+    .system-layout-item{ width:100%; max-width:320px; }
+    .system-layout-media{ height:auto; width:100%; }
+    .system-layout-media img{ width:100%; height:auto; }
+  }
+
+  /* ---------- section shell ---------- */
+  section.panel{ padding: 72px 96px; }
+  @media (max-width:860px){ section.panel{ padding:56px 24px; } }
+  .section-head{ margin-bottom: 48px; }
+  .section-head .row{ display:flex; align-items:baseline; gap:16px; padding-bottom:24px; }
+  .section-head .num{ font-size:14px; color: var(--accent); font-weight:600; }
+  .section-head h2{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size: clamp(26px, 3.6vw, 40px); }
+  .section-head .note{ margin-left:auto; font-size:12px; color: var(--ink-faint); font-weight:500; }
+
+  /* ---------- overview ---------- */
+  .overview-grid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap:72px; }
+  /* opt-in: center the text column on the media beside it, rather than the
+     default top alignment (used where the right column is a media-block, not facts) */
+  .overview-grid.v-center{ align-items:center; }
+  .overview-grid p{ font-size:16px; line-height:1.75; color: var(--ink-dim); margin-bottom:18px; }
+  .overview-grid p b{ color:var(--ink); font-weight:600; }
+  .facts{ border-left:1px solid var(--line); padding-left:24px; }
+  .facts .fact{ margin-bottom:26px; }
+  .facts .fact .k{ font-size:11px; color: var(--accent); font-weight:600; letter-spacing:0.04em; margin-bottom:6px; }
+  .facts .fact .v{ font-size:15px; color: var(--ink); }
+  @media (max-width:860px){
+    .overview-grid{ grid-template-columns:1fr; }
+    .facts{ border-left:none; padding-left:0; padding-top:24px; }
+  }
+
+  /* ---------- process stages ---------- */
+  .stage{ margin-bottom: 72px; }
+  .stage:last-child{ margin-bottom:0; }
+  .stage-head{ display:flex; gap:20px; align-items:baseline; margin-bottom:24px; }
+  .stage-head .stage-num{ font-size:13px; color: var(--accent); font-weight:600; flex-shrink:0; }
+  .stage-head .stage-title{
+    font-family:'Space Grotesk', sans-serif; font-weight:600; font-size: clamp(20px, 2.4vw, 26px);
+  }
+  .stage-caption{ font-size:14px; line-height:1.65; color: var(--ink-dim); max-width:620px; margin-bottom:24px; }
+  .stage-media{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; }
+  .stage-media.single{ grid-template-columns: 1fr; }
+  .stage-media .cap{
+    margin-top:10px; font-size:11px; color: var(--ink-faint); font-weight:500; letter-spacing:0.02em;
+  }
+
+  /* ---------- storyboard ---------- */
+  .storyboard{
+    display:grid; grid-template-columns: repeat(6, 1fr); gap:20px 14px;
+  }
+  .sb-frame .shot{
+    position:relative; aspect-ratio: 3/2; overflow:hidden;
+    border:1px solid var(--line); background: var(--white);
+  }
+  .sb-frame .shot img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .sb-frame .placeholder{
+    width:100%; height:100%; background:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .sb-frame .placeholder span{
+    font-size:10px; font-weight:500; color:var(--ink-faint); letter-spacing:0.04em;
+    border:1px solid var(--line-strong); padding:4px 9px; background:var(--white);
+  }
+  .sb-frame .corner{
+    position:absolute; width:12px; height:12px; border:1px solid var(--accent);
+    opacity:0; transition: opacity .25s;
+  }
+  .sb-frame:hover .corner{ opacity:0.5; }
+  .sb-frame .corner.tl{ top:6px; left:6px; border-right:none; border-bottom:none; }
+  .sb-frame .corner.tr{ top:6px; right:6px; border-left:none; border-bottom:none; }
+  .sb-frame .corner.bl{ bottom:6px; left:6px; border-right:none; border-top:none; }
+  .sb-frame .corner.br{ bottom:6px; right:6px; border-left:none; border-top:none; }
+  .sb-frame .n{
+    font-size:10px; font-weight:600; color: var(--accent); letter-spacing:0.05em;
+    margin:10px 0 3px;
+  }
+  .sb-frame .label{ font-size:12.5px; line-height:1.4; color: var(--ink); }
+  .credit-line{
+    margin-top:32px; font-size:12px; color: var(--ink-faint);
+    padding-top:20px;
+  }
+  .credit-line b{ color: var(--ink-dim); font-weight:600; }
+  @media (max-width:1280px){ .storyboard{ grid-template-columns: repeat(3, 1fr); gap:24px 18px; } }
+  @media (max-width:760px){ .storyboard{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width:460px){ .storyboard{ grid-template-columns: 1fr; } }
+
+  /* ---------- final gallery: horizontal render slider ---------- */
+  .slider-wrap{ position:relative; }
+  .slider{
+    display:flex; gap:1px; background: var(--line);
+    overflow-x:auto; scroll-snap-type: x mandatory;
+    scroll-behavior:smooth;
+    border:1px solid var(--line);
+    scrollbar-width:none;
+  }
+  .slider::-webkit-scrollbar{ display:none; }
+  .slide{
+    flex:0 0 auto; scroll-snap-align:start;
+    width: min(52vw, 680px);
+    background: var(--white);
+    position:relative;
+  }
+  .slide .shot{
+    aspect-ratio: 4/3; width:100%;
+    background: var(--white);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden; position:relative;
+  }
+  .slide .shot img, .slide .shot video{
+    width:100%; height:100%; object-fit:contain; display:block;
+    background: var(--white); padding:16px;
+  }
+  .slide .shot .placeholder span{
+    font-size:11px; font-weight:500; color: var(--ink-faint); letter-spacing:0.04em;
+    border:1px solid var(--line-strong); padding:6px 14px; background: var(--white);
+  }
+  /* opt-in: a second image layered on top of the shot — e.g. a device-frame
+     PNG overlaid on a raw screenshot. Transparent, click-through, no crop. */
+  .slide .shot .shot-frame{
+    position:absolute; inset:0; z-index:2;
+    width:100%; height:100%; object-fit:contain;
+    background:none; padding:16px;
+    pointer-events:none;
+  }
+  .slide .corner{
+    position:absolute; width:16px; height:16px; border:1px solid var(--accent);
+    opacity:0; transition: opacity .25s;
+  }
+  .slide:hover .corner{ opacity:0.5; }
+  .slide .corner.tl{ top:10px; left:10px; border-right:none; border-bottom:none; }
+  .slide .corner.tr{ top:10px; right:10px; border-left:none; border-bottom:none; }
+  .slide .corner.bl{ bottom:10px; left:10px; border-right:none; border-top:none; }
+  .slide .corner.br{ bottom:10px; right:10px; border-left:none; border-top:none; }
+  .slide .cap{
+    padding:14px 18px 18px; font-size:11px; color: var(--ink-faint); font-weight:500;
+    display:flex; justify-content:space-between; gap:12px;
+  }
+  .slide .cap .n{ color: var(--accent); font-weight:600; }
+  /* opt-in: a one-line description under the cap, for a slide whose caption
+     needs more than a number + title (e.g. a short concept explainer) */
+  .slide .cap-desc{ padding:0 18px 18px; font-size:12.5px; line-height:1.55; color: var(--ink-dim); }
+
+  .slider-controls{
+    position:absolute; inset:0; z-index:3;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 16px; pointer-events:none;
+    opacity:0; transition: opacity .25s;
+  }
+  .slider-wrap:hover .slider-controls{ opacity:1; }
+  .slider-controls button{
+    pointer-events:auto;
+    width:44px; height:44px;
+    background: rgba(255,255,255,0.72);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border:1px solid rgba(44,74,102,0.28); color: var(--accent);
+    cursor:pointer; font-size:16px; line-height:1;
+    transition: background .2s, border-color .2s;
+  }
+  .slider-controls button:hover{
+    background: rgba(255,255,255,0.92); border-color: var(--accent);
+  }
+  @media (max-width:1000px){ .slide{ width: 68vw; } }
+  @media (max-width:700px){ .slide{ width: 86vw; } }
+
+  /* opt-in: a smaller slider where several slides should already be
+     visible without scrolling (e.g. a strip of small UI screens),
+     rather than one or two large slides at a time */
+  .slider-wrap--compact .slide{ width:260px; }
+  .slider-wrap--compact .slide .shot{ aspect-ratio:1/1; }
+  .slider-wrap--compact .slide .cap{ padding:10px 12px 12px; }
+  @media (max-width:1000px){ .slider-wrap--compact .slide{ width:220px; } }
+  @media (max-width:700px){ .slider-wrap--compact .slide{ width:180px; } }
+
+  /* opt-in: sized so roughly 4 slides sit visible at once (e.g. a row of
+     portrait phone-screen mockups) rather than the ~6-7 of --compact alone;
+     also drops the 1:1 crop-box since these are taller than they are wide */
+  .slider-wrap--compact.slider-wrap--4up .slide{ width:360px; }
+  .slider-wrap--compact.slider-wrap--4up .slide .shot{ aspect-ratio:3/4; }
+  @media (max-width:1000px){ .slider-wrap--compact.slider-wrap--4up .slide{ width:288px; } }
+  @media (max-width:700px){ .slider-wrap--compact.slider-wrap--4up .slide{ width:240px; } }
+
+  /* ---------- lightbox — full-view + zoom for any slide image, built
+     once by JS and shared across every slider on the page ---------- */
+  .slide .shot img{ cursor: zoom-in; }
+  .lightbox{
+    position:fixed; inset:0; z-index:200;
+    background: rgba(255,255,255,0.92);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transition: opacity .25s;
+  }
+  .lightbox.open{ opacity:1; pointer-events:auto; }
+  .lightbox-stage{
+    max-width:88vw; max-height:86vh; overflow:auto;
+    display:flex; align-items:center; justify-content:center;
+    background: var(--white); padding:20px;
+  }
+  .lightbox-stage::-webkit-scrollbar{ display:none; }
+  .lightbox-img{
+    max-width:calc(88vw - 40px); max-height:calc(86vh - 40px); width:auto; height:auto;
+    display:block; cursor: zoom-in; transition: transform .2s;
+    object-fit:contain;
+  }
+  .lightbox-img.zoomed{
+    max-width:none; max-height:none; transform:scale(1.9); cursor: zoom-out;
+  }
+  .lightbox-close, .lightbox-nav{
+    position:absolute; z-index:2; border-radius:50%;
+    background: var(--white); border:1px solid var(--line-strong); color: var(--accent);
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition: background .2s, border-color .2s;
+  }
+  .lightbox-close:hover, .lightbox-nav:hover{ background: var(--paper); border-color: var(--accent); }
+  .lightbox-close{ top:24px; right:24px; width:44px; height:44px; font-size:16px; }
+  .lightbox-nav{ top:50%; transform:translateY(-50%); width:52px; height:52px; font-size:18px; }
+  .lightbox-nav.prev{ left:24px; }
+  .lightbox-nav.next{ right:24px; }
+  .lightbox-nav[hidden]{ display:none; }
+  @media (max-width:700px){
+    .lightbox-close{ top:12px; right:12px; width:38px; height:38px; }
+    .lightbox-nav{ width:42px; height:42px; }
+    .lightbox-nav.prev{ left:8px; }
+    .lightbox-nav.next{ right:8px; }
+  }
+
+  /* ---------- footer ---------- */
+  footer{ padding: 0 96px 48px; text-align:center; }
+  footer h2{ font-family:'Space Grotesk', sans-serif; font-size: clamp(28px, 4.5vw, 48px); font-weight:700; margin: 48px 0 24px; }
+  .contact-links{ display:flex; justify-content:center; gap:24px; flex-wrap:wrap; font-size:13px; font-weight:500; }
+  .contact-links a{ color: var(--ink-dim); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px; transition: color .2s, border-color .2s; }
+  .contact-links a:hover{ color: var(--accent); border-color: var(--accent); }
+  .footer-meta{
+    margin-top:48px; font-size:11px; color: var(--ink-faint); font-weight:500;
+    display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:10px;
+  }
+  .footer-meta span:first-child{ text-align:left; }
+  .footer-meta span:last-child{ text-align:right; }
+
+  @media (max-width:600px){
+    nav{ padding:24px 24px 0; }
+    .project-header{ padding: 48px 24px 32px; }
+    footer{ padding:0 24px 48px; }
+    .footer-meta{ grid-template-columns:1fr; justify-items:center; text-align:center; }
+    .footer-meta span:first-child, .footer-meta span:last-child{ text-align:center; }
+  }
+
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
