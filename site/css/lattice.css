@@ -102,3 +102,23 @@
   .use-tool p{ font-size:16px; color:var(--ink-dim); max-width:520px; margin:0 auto 32px; line-height:1.6; }
   .use-tool .cta-row{ justify-content:center; }
   @media (max-width:860px){ .use-tool{ padding:72px 24px; } }
+
+  /* ---------- hover-to-play marker ----------
+     These videos sit paused on a still frame until hovered, so nothing signals
+     they move. A small translucent play glyph marks them, then fades out on
+     hover as the video starts. It hangs off the parent because pseudo-elements
+     don't render on a replaced element like <video>, and is click-through so
+     it never blocks the slider drag or a card link. */
+  .shot:has(> .hover-video),
+  .bento-cell:has(> .hover-video){ position:relative; }
+  .shot:has(> .hover-video)::after,
+  .bento-cell:has(> .hover-video)::after{
+    content:'\25B6';
+    position:absolute; right:10px; bottom:10px; z-index:3;
+    font-size:9px; line-height:1; color:var(--ink);
+    background:rgba(255,255,255,0.55); border:1px solid rgba(20,24,29,0.10);
+    padding:5px 6px 5px 7px;
+    opacity:0.65; transition:opacity .2s; pointer-events:none;
+  }
+  .shot:has(> .hover-video):hover::after,
+  .bento-cell:has(> .hover-video):hover::after{ opacity:0; }
