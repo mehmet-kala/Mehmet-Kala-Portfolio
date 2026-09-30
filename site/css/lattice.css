@@ -40,6 +40,8 @@
   .cell-grid .cell .lab{ padding:14px 16px 18px; }
   .cell-grid .cell .lab .n{ font-size:10px; font-weight:600; color:var(--accent); letter-spacing:0.06em; margin-bottom:5px; }
   .cell-grid .cell .lab .t{ font-size:13px; color:var(--ink); line-height:1.4; }
+  /* the connection strategies shown in each cell, under the polyhedron name */
+  .cell-grid .cell .lab .s{ font-size:11.5px; color:var(--ink-dim); line-height:1.4; margin-top:4px; }
   @media (max-width:860px){ .cell-grid{ grid-template-columns:repeat(2,1fr); } }
 
   /* mosaic grid — one big shot, one wide shot, two small squares */
