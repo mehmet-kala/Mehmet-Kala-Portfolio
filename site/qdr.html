@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Design Revolve (qdR) — Mehmet Kala</title>
+<meta name="description" content="qdR is a Blender add-on for sketching revolved geometry live. Draw half an outline and edit splits, joints, patterns, fillets and materials while the curve stays live.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=7">
+<link rel="stylesheet" href="css/lattice.css?v=14">
+<link rel="stylesheet" href="css/qdr.css?v=1">
+</head>
+<body>
+
+<nav>
+  <div class="nav-row">
+    <div class="logo">MEHMET KALA <span>// Industrial Design</span></div>
+    <a class="back-link" href="index.html"><span class="arrow mono">←</span> Back to work</a>
+  </div>
+  <div class="dot-rule"></div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="project-header">
+  <div>
+    <div class="eyebrow">BLENDER ADD-ON — 2026</div>
+    <h1>Quick Design<br>Revolve</h1>
+    <p class="dek">One curve. Whole product. Draw half an outline in Blender and qdR turns
+      it into a part with real walls, joints, threads and grips.</p>
+
+    <div class="spec-row mono">
+      <span><b>BUILT FOR</b> — Blender 5.2+</span>
+      <span><b>FORMAT</b> — Blender extension</span>
+      <span><b>INCLUDES</b> — Full PDF guide</span>
+      <span><b>PRICE</b> — €20</span>
+    </div>
+
+    <div class="cta-row">
+      <a class="cta" href="https://mehmetkala.gumroad.com/l/qdR" target="_blank" rel="noopener">Buy qdR — €20 <span class="mono">↗</span></a>
+    </div>
+  </div>
+
+  <div class="hero-render">
+    <video src="images/qdr_hero.mp4" poster="images/qdr_hero_poster.jpg" autoplay muted loop playsinline aria-label="A drawn curve becomes a dome lamp"></video>
+    <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+  </div>
+</header>
+
+<div class="divider-dots dot-zone"></div>
+
+<!-- ================= THE TOOL ================= -->
+<section class="panel">
+  <div class="section-head">
+    <div class="row">
+      <span class="num">00</span>
+      <h2>The Tool</h2>
+      <span class="note">WHAT YOU GET FOR €20</span>
+    </div>
+    <div class="dot-rule"></div>
+  </div>
+  <div class="overview-grid">
+    <div>
+      <p><b>qdR is a Blender add-on for sketching revolved geometry, live.</b> You draw half
+        an outline, the way you would on paper, and it becomes a revolved part straight
+        away. The curve stays live the whole time: move a point and every part rebuilds
+        around it as you drag.</p>
+      <p>On top of that one curve you get <b>control over the details that make it a real
+        product</b>: splits into separate parts, joints and threads at the seams, wall
+        thickness, fillets and bevels on the corners, ribs, flutes and knurl patterns, part
+        names and materials, and the quality level of the result. Change any of them and
+        the model updates in place, so you can keep sketching instead of rebuilding.</p>
+      <p>It is <b>primarily a concept tool</b>, made for the early stage of a design, when
+        you want many believable options fast. Because the parts carry real walls, joints
+        and dimensions, it can also take an idea all the way to a final model depending on the use case and the manufacturing process.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><div class="k">PRICE</div><div class="v">€20, one-time</div></div>
+      <div class="fact"><div class="k">INCLUDES</div><div class="v">Add-on and full PDF guide</div></div>
+      <div class="fact"><div class="k">REQUIRES</div><div class="v">Blender 5.2 or newer</div></div>
+      <div class="fact"><div class="k">UNITS</div><div class="v">True millimetres, at any Unit Scale</div></div>
+      <div class="fact"><div class="k">INSTALL</div><div class="v">Drag the .zip into Blender</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-dots dot-zone"></div>
+
+<!-- ================= FROM CURVE TO PRODUCT ================= -->
+<section class="panel">
+  <div class="section-head">
+    <div class="row">
+      <span class="num">01</span>
+      <h2>From Curve to Product</h2>
+      <span class="note">SIX STEPS, ONE PANEL</span>
+    </div>
+    <div class="dot-rule"></div>
+  </div>
+
+  <div class="qdr-steps-layout">
+    <div>
+      <div class="media-block player">
+        <video src="images/qdr_screen_recording.mp4" poster="images/qdr_screen_poster.jpg" muted loop playsinline preload="metadata"></video>
+        <button class="player-overlay" type="button" aria-label="Play video">▶</button>
+        <div class="player-bar">
+          <button class="player-toggle" type="button" aria-label="Play / pause">▶</button>
+          <button class="player-skip mono" type="button" data-skip="-10" aria-label="Back 10 seconds">−10s</button>
+          <button class="player-skip mono" type="button" data-skip="10" aria-label="Forward 10 seconds">+10s</button>
+          <div class="player-track"><div class="player-fill"></div></div>
+          <span class="player-time mono">0:00</span>
+          <button class="player-speed mono" type="button" aria-label="Playback speed">1×</button>
+          <button class="player-fullscreen" type="button" aria-label="Fullscreen">⛶</button>
+        </div>
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <div class="media-caption mono">FIG. 01 — SCREEN RECORDING IN BLENDER, CUT TO 20 SECONDS</div>
+    </div>
+
+    <ol class="qdr-steps">
+      <li><span class="n mono">01</span><div><div class="t">Draw</div><div class="d">Draw half the outline in the side view.</div></div></li>
+      <li><span class="n mono">02</span><div><div class="t">Tidy</div><div class="d">Rebuild the stroke as a clean curve, without the hand shake.</div></div></li>
+      <li><span class="n mono">03</span><div><div class="t">Edit</div><div class="d">Move a point; the parts update live.</div></div></li>
+      <li><span class="n mono">04</span><div><div class="t">Split</div><div class="d">Cut it into parts; the joint is built at the split.</div></div></li>
+      <li><span class="n mono">05</span><div><div class="t">Knurl</div><div class="d">Add knurls, flutes or ribs where a hand grips.</div></div></li>
+      <li><span class="n mono">06</span><div><div class="t">Render</div><div class="d">Present it, or export it to take further.</div></div></li>
+    </ol>
+  </div>
+</section>
+
+<div class="divider-dots dot-zone"></div>
+
+<!-- ================= REAL PARTS ================= -->
+<section class="panel">
+  <div class="section-head">
+    <div class="row">
+      <span class="num">02</span>
+      <h2>Real Parts, Not Just Shapes</h2>
+      <span class="note">JOINTS · WALLS · THREADS · GRIPS</span>
+    </div>
+    <div class="dot-rule"></div>
+  </div>
+
+  <div class="bento-grid">
+
+    <div class="bento-cell media crop ratio-16x9 b-col4 b-row2">
+      <span class="tag mono">A</span>
+      <video class="hover-video" src="images/qdr_joint.mp4" poster="images/qdr_joint_poster.jpg" muted loop playsinline preload="metadata"></video>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+    </div>
+    <div class="bento-cell note b-col2 b-row2">
+      <div class="k">JOINTS</div>
+      <p>Split on a straight stretch of wall and the lip and seat are built for you.</p>
+    </div>
+
+    <div class="bento-cell note b-col2 b-row2">
+      <div class="k">WALLS</div>
+      <p>Any size, same wall, in true millimetres.</p>
+    </div>
+    <div class="bento-cell media crop ratio-16x9 b-col4 b-row2">
+      <span class="tag mono">B</span>
+      <video class="hover-video" src="images/qdr_walls.mp4" poster="images/qdr_walls_poster.jpg" muted loop playsinline preload="metadata"></video>
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+    </div>
+
+    <div class="bento-cell media crop ratio-16x9 b-col3">
+      <span class="tag mono">C</span>
+      <img src="images/qdr_threads.jpg" alt="Close-up of a modelled screw thread" loading="lazy">
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+    </div>
+    <div class="bento-cell media crop ratio-16x9 b-col3">
+      <span class="tag mono">D</span>
+      <img src="images/qdr_grips.jpg" alt="Close-up of a knurled ring" loading="lazy">
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+    </div>
+    <div class="bento-cell note b-col3">
+      <div class="k">THREADS</div>
+      <p>Caps that actually screw on.</p>
+    </div>
+    <div class="bento-cell note b-col3">
+      <div class="k">GRIPS</div>
+      <p>Knurls, flutes, ribs and flats.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-dots dot-zone"></div>
+
+<!-- ================= THE GUIDE ================= -->
+<section class="panel">
+  <div class="section-head">
+    <div class="row">
+      <span class="num">03</span>
+      <h2>The Guide, in Short</h2>
+      <span class="note">EVERY PANEL IN THE qdR TAB</span>
+    </div>
+    <div class="dot-rule"></div>
+  </div>
+
+  <div class="qdr-guide-intro">
+    <p><b>Everything lives in one sidebar tab</b> in the 3D Viewport (press N, then open
+      qdR). Here is what each panel is for. The full PDF guide, with every setting and a
+      picture for each, comes with your download.</p>
+    <span class="badge mono">FULL PDF GUIDE INCLUDED</span>
+  </div>
+
+  <div class="qdr-guide">
+    <div class="group">
+      <div class="k mono">01 — DRAW</div>
+      <dl>
+        <div><dt>qdR Draw</dt><dd>Draw half the outline in the side view.</dd></div>
+        <div><dt>New strokes · smoothing</dt><dd>How much hand shake is taken out while you draw.</dd></div>
+        <div><dt>Selected strokes · clean up</dt><dd>Tidy, Right Angles, Reduce Points and Point Type turn a rough stroke into a clean curve.</dd></div>
+      </dl>
+    </div>
+    <div class="group">
+      <div class="k mono">02 — SHAPE</div>
+      <dl>
+        <div><dt>Revolve</dt><dd>Turns the profile into a solid part.</dd></div>
+        <div><dt>Edit Profile</dt><dd>Change the curve; the parts follow live.</dd></div>
+        <div><dt>Size · cage</dt><dd>Drag the cage or use Fit to Box to set real dimensions.</dd></div>
+        <div><dt>Selected part · thickness and ends</dt><dd>Solid or hollow, wall thickness and how the ends close.</dd></div>
+        <div><dt>Corners · round or chamfer</dt><dd>Round off or chamfer the corners of the outline.</dd></div>
+      </dl>
+    </div>
+    <div class="group">
+      <div class="k mono">03 — SPLIT</div>
+      <dl>
+        <div><dt>Add Split</dt><dd>Cut a part in two, then drag the marker to move the cut.</dd></div>
+        <div><dt>Selected split · fillet, gap, rim</dt><dd>How the two parts meet at the seam.</dd></div>
+        <div><dt>Selected split · joint</dt><dd>Add a joint between the parts, on a straight stretch of wall.</dd></div>
+      </dl>
+    </div>
+    <div class="group">
+      <div class="k mono">04 — DETAIL</div>
+      <dl>
+        <div><dt>Cross section · ribs, flutes, flats, knurl</dt><dd>Pattern the surface, limited to a zone if you like.</dd></div>
+        <div><dt>Parts · names and materials</dt><dd>Name each part and give it a material.</dd></div>
+        <div><dt>All parts · walls, splits, corners</dt><dd>Change every part of the product at once.</dd></div>
+      </dl>
+    </div>
+    <div class="group">
+      <div class="k mono">05 — CHECK</div>
+      <dl>
+        <div><dt>Measure · size, capacity, weight</dt><dd>Real dimensions, how much it holds and what it weighs.</dd></div>
+        <div><dt>Explode · see parts apart, animate</dt><dd>Pull the parts apart and keyframe an assembly.</dd></div>
+        <div><dt>Resolution · steps and shading</dt><dd>Trade smoothness for speed.</dd></div>
+        <div><dt>Problems</dt><dd>What qdR could not build, and what to change.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<div class="divider-dots dot-zone"></div>
+
+<!-- ================= MADE WITH qdR ================= -->
+<section class="panel">
+  <div class="section-head">
+    <div class="row">
+      <span class="num">04</span>
+      <h2>Made with qdR</h2>
+      <span class="note">ONE CURVE EACH</span>
+    </div>
+    <div class="dot-rule"></div>
+  </div>
+
+  <div class="slider-wrap">
+    <div class="slider">
+      <div class="slide">
+        <div class="shot"><img src="images/qdr_made_dome_lamps.jpg" alt="Five dome lamps from one curve" loading="lazy">
+          <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div></div>
+        <div class="cap"><span class="n mono">01</span><span>Dome lamps, five variations of one profile</span></div>
+      </div>
+      <div class="slide">
+        <div class="shot"><img src="images/qdr_made_pens_grips.jpg" alt="Pens with different grip patterns" loading="lazy">
+          <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div></div>
+        <div class="cap"><span class="n mono">02</span><span>Writing instruments, grip studies</span></div>
+      </div>
+      <div class="slide">
+        <div class="shot"><img src="images/qdr_made_bottles.jpg" alt="Labelled bottles in four sizes" loading="lazy">
+          <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div></div>
+        <div class="cap"><span class="n mono">03</span><span>Bottles: copy, reshape, repeat</span></div>
+      </div>
+      <div class="slide">
+        <div class="shot"><img src="images/qdr_made_dome_lamp_explode.jpg" alt="Dome lamp exploded into its parts" loading="lazy">
+          <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div></div>
+        <div class="cap"><span class="n mono">04</span><span>Dome lamp, exploded into its parts</span></div>
+      </div>
+      <div class="slide">
+        <div class="shot"><img src="images/qdr_made_pencils_explode.jpg" alt="Pencils exploded into their parts" loading="lazy">
+          <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div></div>
+        <div class="cap"><span class="n mono">05</span><span>Pencils, exploded</span></div>
+      </div>
+      <div class="slide">
+        <div class="shot"><img src="images/qdr_made_pen_range.jpg" alt="Four pens branded qdR" loading="lazy">
+          <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div></div>
+        <div class="cap"><span class="n mono">06</span><span>Pen range, branded qdR</span></div>
+      </div>
+    </div>
+
+    <div class="slider-controls">
+      <button type="button" data-dir="-1" aria-label="Previous image">←</button>
+      <button type="button" data-dir="1" aria-label="Next image">→</button>
+    </div>
+  </div>
+</section>
+
+<div class="dot-rule"></div>
+
+<!-- ================= USE THE TOOL ================= -->
+<section class="use-tool" id="use-tool">
+  <h2>Use the tool.</h2>
+  <p>€20 gets you the add-on and the full PDF guide. It runs inside Blender,
+    so your renders, materials and exports work as they always do.</p>
+  <div class="cta-row">
+    <a class="cta" href="https://mehmetkala.gumroad.com/l/qdR" target="_blank" rel="noopener">Buy qdR — €20 <span class="mono">↗</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="contact-links">
+    <a href="index.html">← BACK TO PORTFOLIO</a>
+    <a href="mailto:mehmet0kala@gmail.com">EMAIL</a>
+  </div>
+  <div class="footer-meta mono">
+    <span>QUICK DESIGN REVOLVE</span>
+    <span>MEHMET KALA</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    // cell videos: play only while hovered, otherwise rest on the frame
+    // just before the last one instead of snapping back to the first frame.
+    function restFrame(v){
+      if(v.duration && isFinite(v.duration)){
+        try{ v.currentTime = Math.max(0, v.duration - 0.05); }catch(e){}
+      }
+    }
+    document.querySelectorAll('.hover-video').forEach(function(v){
+      var host = v.closest('.shot') || v.closest('.cell') || v.parentElement;
+      v.addEventListener('loadedmetadata', function(){ restFrame(v); });
+      host.addEventListener('mouseenter', function(){
+        v.currentTime = 0;
+        v.play();
+      });
+      host.addEventListener('mouseleave', function(){
+        v.pause();
+        restFrame(v);
+      });
+    });
+  })();
+
+  (function(){
+    // fig. 01 — custom player: big overlay button until first play, then a bottom play bar
+    document.querySelectorAll('.media-block.player').forEach(function(block){
+      var video = block.querySelector('video');
+      var overlay = block.querySelector('.player-overlay');
+      var bar = block.querySelector('.player-bar');
+      var toggle = block.querySelector('.player-toggle');
+      var track = block.querySelector('.player-track');
+      var fill = block.querySelector('.player-fill');
+      var time = block.querySelector('.player-time');
+      var skipBtns = block.querySelectorAll('.player-skip');
+      var speedBtn = block.querySelector('.player-speed');
+      var speeds = [0.5, 1, 1.5, 2];
+      var speedIndex = 1;
+      if(!video) return;
+
+      function formatTime(s){
+        if(!isFinite(s)) return '0:00';
+        var m = Math.floor(s / 60), sec = Math.floor(s % 60);
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+      }
+      function sync(){
+        var playing = !video.paused && !video.ended;
+        overlay.textContent = playing ? '❚❚' : '▶';
+        toggle.textContent = playing ? '❚❚' : '▶';
+      }
+      function toggleVideo(){
+        video.paused ? video.play() : video.pause();
+      }
+
+      if(bar) bar.addEventListener('click', function(e){ e.stopPropagation(); });
+      overlay.addEventListener('click', function(e){
+        e.stopPropagation();
+        block.classList.add('touched');
+        toggleVideo();
+      });
+      toggle.addEventListener('click', function(e){
+        e.stopPropagation();
+        block.classList.add('touched');
+        toggleVideo();
+      });
+      track.addEventListener('click', function(e){
+        e.stopPropagation();
+        var rect = track.getBoundingClientRect();
+        var ratio = (e.clientX - rect.left) / rect.width;
+        if(video.duration) video.currentTime = ratio * video.duration;
+      });
+      skipBtns.forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.stopPropagation();
+          var delta = parseFloat(btn.dataset.skip) || 0;
+          var d = video.duration || Infinity;
+          video.currentTime = Math.min(Math.max(video.currentTime + delta, 0), d);
+        });
+      });
+      if(speedBtn){
+        speedBtn.textContent = speeds[speedIndex] + '×';
+        speedBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          speedIndex = (speedIndex + 1) % speeds.length;
+          video.playbackRate = speeds[speedIndex];
+          speedBtn.textContent = speeds[speedIndex] + '×';
+        });
+      }
+      var fsBtn = block.querySelector('.player-fullscreen');
+      if(fsBtn){
+        fsBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          var isFs = document.fullscreenElement === block || document.webkitFullscreenElement === block;
+          if(isFs){
+            (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+          } else if(block.requestFullscreen){
+            block.requestFullscreen();
+          } else if(block.webkitRequestFullscreen){
+            block.webkitRequestFullscreen();
+          }
+        });
+      }
+      video.addEventListener('timeupdate', function(){
+        if(video.duration){ fill.style.width = (video.currentTime / video.duration * 100) + '%'; }
+        time.textContent = formatTime(video.currentTime);
+      });
+      video.addEventListener('play', sync);
+      video.addEventListener('pause', sync);
+      block.addEventListener('click', function(){
+        block.classList.add('touched');
+        toggleVideo();
+      });
+      sync();
+    });
+  })();
+
+  (function(){
+    // made-with-qdR slider — same scroll-snap + drag-to-pan interaction
+    // as the Holo project's final-renders slider, generalized to any .slider-wrap
+    document.querySelectorAll('.slider-wrap').forEach(function(wrap){
+      var slider = wrap.querySelector('.slider');
+      if(!slider) return;
+
+      function step(){
+        var slide = slider.querySelector('.slide');
+        return slide ? slide.getBoundingClientRect().width + 1 : slider.clientWidth;
+      }
+
+      wrap.querySelectorAll('.slider-controls button').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          slider.scrollBy({ left: step() * Number(btn.dataset.dir), behavior: 'smooth' });
+        });
+      });
+
+      // click-and-drag to pan, for mouse users
+      var down = false, startX = 0, startScroll = 0;
+      slider.addEventListener('mousedown', function(e){
+        down = true; startX = e.pageX; startScroll = slider.scrollLeft;
+        slider.style.cursor = 'grabbing';
+      });
+      ['mouseup', 'mouseleave'].forEach(function(evt){
+        slider.addEventListener(evt, function(){ down = false; slider.style.cursor = ''; });
+      });
+      slider.addEventListener('mousemove', function(e){
+        if(!down) return;
+        e.preventDefault();
+        slider.scrollLeft = startScroll - (e.pageX - startX);
+      });
+    });
+  })();
+
+  (function(){
+    // lightbox — click any slide image for a large view with zoom + prev/next
+    var lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML =
+      '<button class="lightbox-close" type="button" aria-label="Close">✕</button>' +
+      '<button class="lightbox-nav prev" type="button" aria-label="Previous image">←</button>' +
+      '<div class="lightbox-stage"><img class="lightbox-img" alt=""></div>' +
+      '<button class="lightbox-nav next" type="button" aria-label="Next image">→</button>';
+    document.body.appendChild(lightbox);
+
+    var stageImg = lightbox.querySelector('.lightbox-img');
+    var btnClose = lightbox.querySelector('.lightbox-close');
+    var btnPrev = lightbox.querySelector('.lightbox-nav.prev');
+    var btnNext = lightbox.querySelector('.lightbox-nav.next');
+    var curGroup = [], curIndex = 0;
+
+    function show(){
+      stageImg.classList.remove('zoomed');
+      var img = curGroup[curIndex];
+      stageImg.src = img.currentSrc || img.src;
+      stageImg.alt = img.alt || '';
+      var multi = curGroup.length > 1;
+      btnPrev.hidden = !multi;
+      btnNext.hidden = !multi;
+    }
+    function open(group, index){
+      curGroup = group; curIndex = index; show();
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function prev(){ curIndex = (curIndex - 1 + curGroup.length) % curGroup.length; show(); }
+    function next(){ curIndex = (curIndex + 1) % curGroup.length; show(); }
+
+    btnClose.addEventListener('click', close);
+    btnPrev.addEventListener('click', prev);
+    btnNext.addEventListener('click', next);
+    lightbox.addEventListener('click', function(e){ if(e.target === lightbox) close(); });
+    stageImg.addEventListener('click', function(e){
+      e.stopPropagation();
+      stageImg.classList.toggle('zoomed');
+    });
+    document.addEventListener('keydown', function(e){
+      if(!lightbox.classList.contains('open')) return;
+      if(e.key === 'Escape') close();
+      else if(e.key === 'ArrowLeft') prev();
+      else if(e.key === 'ArrowRight') next();
+    });
+
+    document.querySelectorAll('.slider').forEach(function(slider){
+      var imgs = Array.prototype.slice.call(slider.querySelectorAll('.slide .shot img'));
+      if(!imgs.length) return;
+      imgs.forEach(function(img, i){
+        var downX = 0, downY = 0, dragged = false;
+        img.addEventListener('mousedown', function(e){ downX = e.clientX; downY = e.clientY; dragged = false; });
+        img.addEventListener('mousemove', function(e){
+          if(e.buttons === 1 && (Math.abs(e.clientX - downX) > 6 || Math.abs(e.clientY - downY) > 6)) dragged = true;
+        });
+        img.addEventListener('click', function(){
+          if(dragged) return;
+          open(imgs, i);
+        });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

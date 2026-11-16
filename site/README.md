@@ -10,10 +10,12 @@ site/
   project-glucobuddy.html    GlucoBuddy
   project-metu-app.html      METU App
   project-lattice.html       Full Control Lattice Generator
+  qdr.html                   Quick Design Revolve (qdR) add-on page
   css/
     style.css                shared by all project pages
     home.css                 main page only
-    lattice.css              extra components, lattice page only
+    lattice.css              extra components, lattice and qdR pages
+    qdr.css                  extra components, qdR page only
   images/                    all images, plain files
 ```
 
