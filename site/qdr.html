@@ -23,7 +23,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=7">
 <link rel="stylesheet" href="css/lattice.css?v=14">
-<link rel="stylesheet" href="css/qdr.css?v=1">
+<link rel="stylesheet" href="css/qdr.css?v=2">
 </head>
 <body>
 
@@ -94,6 +94,19 @@
       <div class="fact"><div class="k">UNITS</div><div class="v">True millimetres, at any Unit Scale</div></div>
       <div class="fact"><div class="k">INSTALL</div><div class="v">Drag the .zip into Blender</div></div>
     </div>
+  </div>
+
+  <div class="qdr-limits">
+    <div class="k mono">KNOWN LIMITS</div>
+    <p><b>When qdR can't build something, it tells you.</b> It leaves that piece out and explains why in the Problems panel, with what to change. These are the limits worth knowing before you buy.</p>
+    <ul>
+      <li><b>Revolved shapes only</b>Every part comes from one outline turned around one axis. Handles, spouts and other features off the axis aren't part of qdR; add them with Blender's own tools.</li>
+      <li><b>Joints and threads need a straight wall</b>A lip, snap or thread needs a straight, upright stretch of wall, like a bottle neck where the thread sits. On a shoulder, slope or corner qdR leaves the joint out and says so: move the split or make the joint shallower.</li>
+      <li><b>Walls and corners have to fit</b>A wall close to the part's widest radius, or corner rounding larger than the wall, leaves little or no hollow inside. qdR warns you when a wall gets too thick for the part.</li>
+      <li><b>Draw in Front view, on one side of the axis</b>Keep the outline on one side of the axis. If it crosses, Cut at Axis (right-click in Edit Mode) fixes it.</li>
+      <li><b>Up to 4 patterns per part</b>Ribs, flutes, flats and knurls can each be limited to a zone, with up to four on one part.</li>
+      <li><b>Blender 5.2 or newer</b>Dense knurls at Final resolution are heavy; sketch at Draft and switch to Final for renders and export.</li>
+    </ul>
   </div>
 </section>
 
