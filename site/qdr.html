@@ -56,7 +56,7 @@
   </div>
 
   <div class="hero-render">
-    <video src="images/qdr_hero.mp4" poster="images/qdr_hero_poster.jpg" autoplay muted loop playsinline aria-label="A drawn curve becomes a dome lamp"></video>
+    <video src="images/qdr_hero.mp4?v=2" poster="images/qdr_hero_poster.jpg?v=2" autoplay muted loop playsinline aria-label="A drawn curve becomes a dome lamp"></video>
     <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
   </div>
 </header>
@@ -158,7 +158,7 @@
 
     <div class="bento-cell media crop ratio-16x9 b-col4 b-row2">
       <span class="tag mono">A</span>
-      <video class="hover-video" src="images/qdr_joint.mp4" poster="images/qdr_joint_poster.jpg" muted loop playsinline preload="metadata"></video>
+      <video class="hover-video" src="images/qdr_joint.mp4?v=2" poster="images/qdr_joint_poster.jpg?v=2" muted loop playsinline preload="metadata"></video>
       <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
     </div>
     <div class="bento-cell note b-col2 b-row2">
@@ -172,7 +172,7 @@
     </div>
     <div class="bento-cell media crop ratio-16x9 b-col4 b-row2">
       <span class="tag mono">B</span>
-      <video class="hover-video" src="images/qdr_walls.mp4" poster="images/qdr_walls_poster.jpg" muted loop playsinline preload="metadata"></video>
+      <video class="hover-video" src="images/qdr_walls.mp4?v=2" poster="images/qdr_walls_poster.jpg?v=2" muted loop playsinline preload="metadata"></video>
       <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
     </div>
 
@@ -345,23 +345,28 @@
 
 <script>
   (function(){
-    // cell videos: play only while hovered, otherwise rest on the frame
-    // just before the last one instead of snapping back to the first frame.
-    function restFrame(v){
-      if(v.duration && isFinite(v.duration)){
-        try{ v.currentTime = Math.max(0, v.duration - 0.05); }catch(e){}
-      }
-    }
+    // bento clips: rest on the poster, play from the start while hovered
+    // (or on tap, for touch), and go back to the poster when stopped.
+    // load() is what brings the poster back — seeking to 0 would only show
+    // the first frame, and these posters are a different still.
     document.querySelectorAll('.hover-video').forEach(function(v){
       var host = v.closest('.shot') || v.closest('.cell') || v.parentElement;
-      v.addEventListener('loadedmetadata', function(){ restFrame(v); });
-      host.addEventListener('mouseenter', function(){
-        v.currentTime = 0;
-        v.play();
-      });
-      host.addEventListener('mouseleave', function(){
+      var lastPointer = 'mouse';
+      function start(){
+        try{ v.currentTime = 0; }catch(e){}
+        var p = v.play();
+        if(p && p.catch) p.catch(function(){});
+      }
+      function stop(){
         v.pause();
-        restFrame(v);
+        v.load();
+      }
+      host.addEventListener('pointerdown', function(e){ lastPointer = e.pointerType; });
+      host.addEventListener('pointerenter', function(e){ if(e.pointerType === 'mouse') start(); });
+      host.addEventListener('pointerleave', function(e){ if(e.pointerType === 'mouse') stop(); });
+      host.addEventListener('click', function(){
+        if(lastPointer === 'mouse') return;
+        v.paused ? start() : stop();
       });
     });
   })();
